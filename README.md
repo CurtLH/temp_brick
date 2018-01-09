@@ -1,5 +1,3 @@
-# Welcome to my Raspberry Pi Temperature Brick!
-
-## Raspberry Pi Zero powered temperature monitor with RGB LCD display
+# Raspberry Pi Zero powered temperature monitor with RGB LCD display
 
 ![Temperature Brick](https://github.com/CurtLH/temp_brick/blob/master/img/temp_brick.JPG)
