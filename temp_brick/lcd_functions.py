@@ -50,7 +50,7 @@ def display_text(text, color='cyan'):
     # get color values
     c0, c1, c2 = get_colors(color)
 
-    # display tesxt
+    # display text
     lcd.clear()
     lcd.set_color(c0, c1, c2)
     lcd.message(text)

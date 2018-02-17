@@ -20,7 +20,9 @@ def get_weather():
 
     cur.execute("""SELECT condition -> 'current_observation' -> 'temp_f' 
                    FROM arlington_weather_condition
-                   WHERE id = (SELECT MAX(id) FROM arlington_weather_condition)""")
+                   WHERE id = (SELECT MAX(id) 
+                               FROM arlington_weather_condition
+                               WHERE condition -> 'current_observation' ->> 'temp_f' != '')""")
 
 
     temp_f = [i[0] for i in cur][0]
@@ -84,27 +86,27 @@ def monitor(wait=60):
 
         # continuously read sensors
         while True:
-
-                # get the latest temp
-                temp = get_weather()
+                   
+            # get the latest temp
+            temp = get_weather()
             
-                # get low/high
-                low, high = get_forecast()
+            # get low/high
+            low, high = get_forecast()
 
-                # pick background color based on temp
-                temp_color = pick_color(temp)
+            # pick background color based on temp
+            temp_color = pick_color(temp)
 
-                # create string to print to screen
-                temp_str = "   Temp: {}\nHigh: {} Low: {}".format(temp, high, low)
+            # create string to print to screen
+            temp_str = "   Temp: {}\nHigh: {} Low: {}".format(temp, high, low)
                 
-                # display temp on LCD and set RGB color based on temp
-                lf.display_text(temp_str, color=temp_color)
+            # display temp on LCD and set RGB color based on temp
+            lf.display_text(temp_str, color=temp_color)
 
-                # print temp to screen
-                print(temp_str)
+            # print temp to screen
+            print(temp_str)
                 
-                # wait n seconds
-                sleep(wait)
+            # wait n seconds
+            sleep(wait)
 
     except Exception, e:
         print(str(e))
