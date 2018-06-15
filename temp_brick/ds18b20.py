@@ -1,7 +1,6 @@
 #! /usr/bin/env python
 import os
 import glob
-import click
 from datetime import datetime
 import psycopg2
 

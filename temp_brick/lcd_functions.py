@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import time
 import Adafruit_CharLCD as LCD
-import click
 
 
 # Raspberry Pi configuration:
@@ -54,18 +53,3 @@ def display_text(text, color='cyan'):
     lcd.clear()
     lcd.set_color(c0, c1, c2)
     lcd.message(text)
-
-
-@click.command()
-@click.argument('text')
-
-def cli(text):
-
-    """displays text to LCD"""
-
-    # display text
-    display_text(text)
-
-
-if __name__ == '__main__':
-    cli()
