@@ -55,5 +55,5 @@ def display_text(text, color='cyan'):
 
     # display text
     lcd.clear()
-    lcd.set_color(c0, c1, c2)
+    #lcd.set_color(c0, c1, c2)
     lcd.message(text)
